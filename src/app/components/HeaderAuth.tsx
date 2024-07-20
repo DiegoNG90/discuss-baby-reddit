@@ -1,20 +1,14 @@
 "use client"
 
 import React from "react"
-import Link from "next/link"
 import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
   NavbarItem,
-  Input,
   Button,
   Avatar,
   Popover,
   PopoverTrigger,
   PopoverContent,
 } from "@nextui-org/react"
-import { auth } from "@/auth"
 import * as actions from "@/actions"
 import { useSession } from "next-auth/react"
 

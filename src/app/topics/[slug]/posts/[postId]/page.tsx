@@ -4,6 +4,7 @@ import CommentList from "@/app/components/comments/comment-list"
 import CommentCreateForm from "@/app/components/comments/comment-create-form"
 import paths from "@/paths"
 import { parseSlug } from "@/app/utils/slug"
+import { fetchCommntsByPostId } from "@/db/queries/comments"
 
 interface PostShowPageProps {
   params: {
@@ -22,8 +23,8 @@ export default async function PostShowPage({ params }: PostShowPageProps) {
         {"< "}Back to {parsedSlug}
       </Link>
       <PostShow postId={postId} />
-      {/* <CommentCreateForm postId={postId} startOpen /> */}
-      {/* <CommentList comments={comments} /> */}
+      <CommentCreateForm postId={postId} startOpen />
+      <CommentList fetchData={() => fetchCommntsByPostId(postId)} />
     </div>
   )
 }

@@ -63,7 +63,6 @@ export async function createPost(
     }
   }
 
-  console.log("session :>", session)
   let post: Post
   try {
     post = await db.post.create({

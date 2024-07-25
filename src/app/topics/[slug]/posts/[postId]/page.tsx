@@ -4,7 +4,6 @@ import CommentList from "@/app/components/comments/comment-list"
 import CommentCreateForm from "@/app/components/comments/comment-create-form"
 import paths from "@/paths"
 import { parseSlug } from "@/app/utils/slug"
-import { fetchCommntsByPostId } from "@/db/queries/comments"
 
 interface PostShowPageProps {
   params: {

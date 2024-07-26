@@ -1,7 +1,29 @@
-import React from "react";
+import Link from "next/link"
+import PostShow from "@/app/components/Post/post-show"
+import CommentList from "@/app/components/comments/comment-list"
+import CommentCreateForm from "@/app/components/comments/comment-create-form"
+import paths from "@/paths"
+import { parseSlug } from "@/app/utils/slug"
 
-function PostShowPage() {
-  return <div>PostShowPage</div>;
+interface PostShowPageProps {
+  params: {
+    slug: string
+    postId: string
+  }
 }
 
-export default PostShowPage;
+export default async function PostShowPage({ params }: PostShowPageProps) {
+  const { slug, postId } = params
+  const parsedSlug = parseSlug(slug)
+
+  return (
+    <div className="space-y-3">
+      <Link className="underline decoration-solid" href={paths.topicShow(slug)}>
+        {"< "}Back to {parsedSlug}
+      </Link>
+      <PostShow postId={postId} />
+      <CommentCreateForm postId={postId} startOpen />
+      <CommentList postId={postId} />
+    </div>
+  )
+}

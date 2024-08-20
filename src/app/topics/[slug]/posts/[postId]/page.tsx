@@ -1,8 +1,8 @@
 import { Suspense } from "react"
 import Link from "next/link"
 import PostShow from "@/app/components/Post/post-show"
-import CommentList from "@/app/components/comments/comment-list"
-import CommentCreateForm from "@/app/components/comments/comment-create-form"
+import CommentList from "@/app/components/comments/CommentList"
+import CreateComment from "@/app/components/comments/CreateComment"
 import paths from "@/paths"
 import { parseSlug } from "@/app/utils/slug"
 import PostShowLoading from "@/app/components/Post/post-show-loading"
@@ -26,7 +26,7 @@ export default async function PostShowPage({ params }: PostShowPageProps) {
       <Suspense fallback={<PostShowLoading />}>
         <PostShow postId={postId} />
       </Suspense>
-      <CommentCreateForm postId={postId} startOpen />
+      <CreateComment postId={postId} startOpen />
       <CommentList postId={postId} />
     </div>
   )

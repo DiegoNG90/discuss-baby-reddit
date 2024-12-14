@@ -5,6 +5,8 @@ Each Comment can be replied as well.
 
 Though UI is quite simple, the real challenge is logical.
 
+<img src="https://res.cloudinary.com/drv7bmmzb/image/upload/v1734145518/Captura_de_pantalla_2024-12-14_000210_fdgvoo.png" alt="webpage-preview"/>
+
 ## Getting Started
 
 ### Dev mode

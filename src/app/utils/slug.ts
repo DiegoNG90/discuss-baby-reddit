@@ -1,3 +1,3 @@
 export function parseSlug(slug: string) {
-  return slug.replace("%20", " ")
+  return slug.replaceAll('%20', ' ');
 }

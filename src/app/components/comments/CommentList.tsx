@@ -1,9 +1,5 @@
-import CommentShow from "@/app/components/comments/comment-show"
-import typeCommentShow from "@/app/components/comments/comment-show"
-import {
-  fetchCommntsByPostId,
-  type CommentWithAuthor,
-} from "@/db/queries/comments"
+import CommentItem from "@/app/components/comments/CommentItem"
+import { fetchCommntsByPostId } from "@/db/queries/comments"
 
 interface CommentListProps {
   postId: string
@@ -17,7 +13,7 @@ export default async function CommentList({ postId }: CommentListProps) {
   )
   const renderedComments = topLevelComments.map((comment) => {
     return (
-      <CommentShow key={comment.id} commentId={comment.id} postId={postId} />
+      <CommentItem key={comment.id} commentId={comment.id} postId={postId} />
     )
   })
 

@@ -1,21 +1,17 @@
 import Image from "next/image"
-import { Button } from "@nextui-org/react"
-import CommentCreateForm from "@/app/components/comments/comment-create-form"
-import {
-  fetchCommntsByPostId,
-  type CommentWithAuthor,
-} from "@/db/queries/comments"
+import CreateComment from "@/app/components/comments/CreateComment"
+import { fetchCommntsByPostId } from "@/db/queries/comments"
 
-interface CommentShowProps {
+interface CommentItemProps {
   commentId: string
   postId: string
 }
 
 // TODO: Get a list of comments
-export default async function CommentShow({
+export default async function CommentItem({
   commentId,
   postId,
-}: CommentShowProps) {
+}: CommentItemProps) {
   const comments = await fetchCommntsByPostId(postId)
   const comment = comments.find((c) => c.id === commentId)
 
@@ -25,7 +21,7 @@ export default async function CommentShow({
 
   const children = comments.filter((c) => c.parentId === commentId)
   const renderedChildren = children.map((child) => {
-    return <CommentShow key={child.id} commentId={child.id} postId={postId} />
+    return <CommentItem key={child.id} commentId={child.id} postId={postId} />
   })
 
   return (
@@ -43,8 +39,7 @@ export default async function CommentShow({
             {comment.user.name}
           </p>
           <p className="text-gray-900">{comment.content}</p>
-
-          <CommentCreateForm postId={comment.postId} parentId={comment.id} />
+          <CreateComment postId={comment.postId} parentId={comment.id} />
         </div>
       </div>
       <div className="pl-4">{renderedChildren}</div>
